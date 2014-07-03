@@ -1,15 +1,30 @@
 package scalatutorial.app.service
 
 import java.io.File
+import org.joda.time.DateTime
+import java.util.Date
+import java.text.SimpleDateFormat
 
 object WeatherService {
  lazy val weather = scala.io.Source.fromURL(getClass.getResource("/weather.csv"))
 
- lazy val weatherString: String = try {
-   weather.mkString
+  val dateFormat: SimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd")
+
+  def getRecords(): List[WeatherRecord] = try {
+  weather.getLines().toList.map{ line =>
+
+    val entries = line.split(",").map{ field => field.trim }
+
+    val entry_city = entries(0)
+    val entry_date = dateFormat.parse(entries(1))
+    val entry_high = entries(2).toInt
+    val entry_low = entries(3).toInt
+
+    WeatherRecord(entry_city, entry_date, entry_high, entry_low)
+  }
  } finally {
    weather.close
  }
-
-   def testing(): String = weatherString
 }
+
+case class WeatherRecord(city: String, date: Date, high: Int, low: Int)

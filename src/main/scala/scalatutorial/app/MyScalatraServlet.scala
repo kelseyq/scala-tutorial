@@ -83,9 +83,18 @@ class MyScalatraServlet extends ScalatraServlet with JacksonJsonSupport {
     ???
   }
 
-  //FIRST CLASS FUNCTIONS
   get("/weatherRecords") {
-    WeatherService.testing
+    WeatherService.getRecords
   }
-  
+
+  //FIRST CLASS FUNCTIONS
+  get("/averageTemp/:city") {
+    ???
+  }
+
+  get("/maxTemp") {
+    val date = params("date")
+    ???
+  }
+
 }
