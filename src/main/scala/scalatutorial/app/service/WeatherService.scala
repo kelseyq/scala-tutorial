@@ -11,7 +11,7 @@ object WeatherService {
   val dateFormat: SimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd")
 
   def getRecords(): List[WeatherRecord] = try {
-  weather.getLines().toList.map{ line =>
+  val weatherRecords = weather.getLines().toList.map{ line =>
 
     val entries = line.split(",").map{ field => field.trim }
 
@@ -22,9 +22,8 @@ object WeatherService {
 
     WeatherRecord(entry_city, entry_date, entry_high, entry_low)
   }
- } finally {
    weather.close
- }
+   weatherRecords
 }
 
 case class WeatherRecord(city: String, date: Date, high: Int, low: Int)
