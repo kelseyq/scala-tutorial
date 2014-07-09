@@ -57,13 +57,5 @@ jrebel.lic
 *.sublime-*
 .cache
 
-# intellij
-*.eml
-*.iml
-*.ipr
-*.iws
-.*.sw?
-.idea
-
 # paulp script
 /.lib/
