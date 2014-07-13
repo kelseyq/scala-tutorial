@@ -59,3 +59,5 @@ jrebel.lic
 
 # paulp script
 /.lib/
+
+**/.idea/workspace.xml
