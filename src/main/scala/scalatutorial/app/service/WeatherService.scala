@@ -5,11 +5,11 @@ import java.util.Date
 import java.text.SimpleDateFormat
 
 object WeatherService {
-  lazy val weather = scala.io.Source.fromURL(getClass.getResource("/weather.csv"))
-
   val dateFormat: SimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd")
 
   def getRecords(): List[WeatherRecord] = {
+    lazy val weather = scala.io.Source.fromURL(getClass.getResource("/weather.csv"))
+
     val weatherRecords = weather.getLines().toList.map{ line =>
 
       val entries = line.split(",").map{ field => field.trim }

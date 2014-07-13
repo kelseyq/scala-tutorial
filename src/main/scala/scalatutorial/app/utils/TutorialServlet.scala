@@ -12,4 +12,6 @@ trait TutorialServlet extends ScalatraServlet with JacksonJsonSupport {
     contentType = formats("json")
   }
 
+  def getParamsList(param:String): List[Int] = param.split(",").toList.map(_.toInt)
+
 }

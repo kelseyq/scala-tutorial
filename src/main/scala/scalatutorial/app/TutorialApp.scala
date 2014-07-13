@@ -38,22 +38,23 @@ class TutorialApp extends TutorialServlet {
    * "The high temperature is 45 and the low temperature is 70"
    */
   get("/highLow") {
-    val temps: List[String] = multiParams("temps").toList
+    val temps: List[Int] = getParamsList(params("temps"))
 
     ???
   }
 
   //FUNCTIONS
-  def fToC(fahrenheit: Int): Double = {
+  def fToC(fahrenheit: Double): Double = {
     (fahrenheit - 32.0) * (5.0/9.0)
   }
 
   get("/convertToC") {
-    val f = params("temp").toInt
+    val f = params("temp").toDouble
     fToC(f)
   }
 
   def cToF(celsius: Int): Double = ???
+  def cToF(celsius: Double): Double = ???
 
   get("/convertToF") {
     ???
