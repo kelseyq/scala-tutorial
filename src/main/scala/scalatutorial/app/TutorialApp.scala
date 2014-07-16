@@ -35,7 +35,7 @@ class TutorialApp extends TutorialServlet {
 
   /*
    * http://localhost:8080/highlow?temps=45,70 should return
-   * "The high temperature is 45 and the low temperature is 70"
+   * "The high temperature is 70 and the low temperature is 45"
    */
   get("/highLow") {
     val temps: List[Int] = getParamsList(params("temps"))
